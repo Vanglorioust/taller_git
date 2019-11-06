@@ -101,15 +101,31 @@ def Leds_off():
          })
 def update_label():
     global cont
-    cont=cont+1
-    ref = db.reference("sensor")
-    ref.update({
-                'sensor1': {
-                    'adc': 0,
-                    'valor': cont,
-                    
-            }
-         })
+    if cont>4:
+        cont=cont-2
+        ref = db.reference("sensor")
+        ref.update({
+                    'sensor1': {
+                        'valor': cont,
+
+                }
+             })
+    if cont==4:
+        cont=cont-2
+        ref = db.reference("sensor")
+        ref.update({
+                    'sensor1': {
+                        'valor': 0,
+                 }
+             })
+    if cont==2:
+        cont=cont-2
+        ref = db.reference("sensor")
+        ref.update({
+                    'sensor1': {
+                        'valor': 0,
+                 }
+             })   
     variable.set(cont)
 
     
@@ -118,7 +134,7 @@ def update_label():
 valor.configure(textvariable=variable)
 valor.place(x=20, y=90)
 start_button=Button(marco1,text="cont",command=update_label)
-start_button.place(x=20, y=160)
+start_button.place(x=240, y=150)
 
 valor2.configure(textvariable=adc_data)
 valor2.place(x=130, y=90)
