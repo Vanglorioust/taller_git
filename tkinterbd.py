@@ -67,6 +67,22 @@ def adc_read():
     ref.update({
         'sensor1/adc': prom
     })
+def Leds_on():
+
+    led5.write(1)
+    
+    led6.write(1)
+    
+    led7.write(1)
+    
+    ref = db.reference("sensor")
+    
+    ref.update({
+                  'sensor1/led10': 'ON',
+                  'sensor1/led11': 'ON',
+                  'sensor1/led12': 'ON'
+                    
+         })
 def update_label():
     global cont
     cont=cont+1
@@ -80,12 +96,6 @@ def update_label():
          })
     variable.set(cont)
 
-def save():
-    ref = db.reference('sensor')
-    ref.update({
-        'sensor3/message': 'hola'
-    })
-    
     
   
 
@@ -100,8 +110,9 @@ valor2.place(x=130, y=90)
 prom_15=Button(marco1,text="prom_15",command=adc_read)
 prom_15.place(x=10, y=160)
 
-save_button=Button(marco1,text="save",command=save)
-save_button.place(x=170, y=160)
+leds_on=Button(marco1,text="LEDS_ON",command=Leds_on)
+leds_on.place(x=80, y=160)
+
 
 
 
