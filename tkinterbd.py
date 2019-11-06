@@ -11,7 +11,7 @@ import time
 cont=0
 prom=0
 
-placa = Arduino ('COM8')
+placa = Arduino ('COM3')
 it = util.Iterator(placa)
 it.start()
 a_0 = placa.get_pin('a:0:i')
@@ -23,21 +23,21 @@ led5 = placa.get_pin('d:10:p')
 led6 = placa.get_pin('d:11:p')
 time.sleep(0.5)
 ventana = Tk()
-ventana.geometry('1280x800')
+ventana.geometry('1090x545')
 ventana.title("UI para sistemas de control")
 
 # Fetch the service account key JSON file contents
-cred = credentials.Certificate('keys/key.json')
+cred = credentials.Certificate('key/key.json')
 # Initialize the app with a service account, granting admin privileges
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://bdtkinter.firebaseio.com/'
+    'databaseURL': 'https://taller-git.firebaseio.com/'
 })
 
 
 marco1 = Frame(ventana, bg="gray", highlightthickness=1, width=1280, height=800, bd= 5)
 marco1.place(x = 0,y = 0)
 b=Label(marco1,text="")
-img = Image.open("C:/Users/Camilo/Downloads/logousa.png")
+img = Image.open("D:/Perfil Raul Henao/Desktop/pu/AI")
 img = img.resize((150,150), Image.ANTIALIAS)
 photoImg=  ImageTk.PhotoImage(img)
 b.configure(image=photoImg)
