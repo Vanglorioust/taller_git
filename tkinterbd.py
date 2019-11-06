@@ -83,6 +83,22 @@ def Leds_on():
                   'sensor1/led12': 'ON'
                     
          })
+def Leds_off():
+
+    led5.write(0)
+    
+    led6.write(0)
+    
+    led7.write(0)
+    
+    ref = db.reference("sensor")
+    
+    ref.update({
+                  'sensor1/led10': 'OFF',
+                  'sensor1/led11': 'OFF',
+                  'sensor1/led12': 'OFF'
+                    
+         })
 def update_label():
     global cont
     cont=cont+1
@@ -112,6 +128,9 @@ prom_15.place(x=10, y=160)
 
 leds_on=Button(marco1,text="LEDS_ON",command=Leds_on)
 leds_on.place(x=80, y=160)
+
+save_button=Button(marco1,text="LEDS_OFF",command=Leds_off)
+save_button.place(x=170, y=160)
 
 
 
